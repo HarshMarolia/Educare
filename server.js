@@ -50,6 +50,12 @@ app.get("/pomodoro", (req, res) => {
 app.get("/about", (req, res) => {
     res.render("about");
 })
+app.get("/randompassword", (req, res) => {
+    res.render("randompassword");
+})
+app.get("/urlshort", (req, res) => {
+    res.render("urlshortner");
+})
 app.get('/signup', (req, res) => {
     res.render("signup")
 })
