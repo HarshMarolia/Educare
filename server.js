@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const { stringify } = require('nodemon/lib/utils');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
 var port = process.env.PORT;
 
 const DB = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.erkiv.mongodb.net/notesDb?retryWrites=true&w=majority`;
@@ -95,7 +96,7 @@ app.post('/login', (req, res) => {
         if (result == null)
             res.redirect("/signup");
         else {
-            if (result.password === passwordUser) {
+            if (bcrypt.compare(passwordUser, result.password)) {
                 auth = true;
                 userID = result._id;
                 res.redirect("/todo")
@@ -106,12 +107,15 @@ app.post('/login', (req, res) => {
     })
 })
 
-app.post('/signup', (req, res) => {
+app.post('/signup',async (req, res) => {
     var nameUser = req.body.name;
     var passwordUser = req.body.password;
+    // Hash Password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(passwordUser, salt);
     const newuser = new User({
         name: nameUser,
-        password: passwordUser
+        password: hashedPassword
     });
     User.findOne({ name: nameUser }).then(result => {
         if (result == null)
