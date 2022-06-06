@@ -4,7 +4,30 @@ require('dotenv').config();
 const { stringify } = require('nodemon/lib/utils');
 const mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 var port = process.env.PORT;
+
+const app = express();
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+app.use(express.static("public"));
+app.use(cookieParser());
+
+// a variable to save a session
+var session;
+
+const oneDay = 1000 * 60 * 60 * 24;
+
+//session middleware
+app.use(sessions({
+    secret: `${process.env.SECRET}`,
+    saveUninitialized: true,
+    cookie: { maxAge: oneDay },
+    resave: false
+}));
 
 const DB = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.erkiv.mongodb.net/notesDb?retryWrites=true&w=majority`;
 mongoose.connect(DB, {
@@ -27,17 +50,8 @@ const notesSchema = new mongoose.Schema({
     desc: String
 });
 
-let auth = false;
-let userID = '';
-
 const User = mongoose.model("user", userSchema);
 const Todo = mongoose.model("todo", notesSchema);
-
-const app = express();
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.json())
-app.use(express.static("public"));
 
 app.get("/", (req, res) => {
     res.render("index");
@@ -66,14 +80,14 @@ app.get('/login', (req, res) => {
 })
 
 app.get('/logout', (req, res) => {
-    auth = false;
-    userID = '';
+    req.session.destroy();
     res.redirect("/")
 })
 
 app.get('/todo', (req, res) => {
-    Todo.find({ user: userID }).then((t) => {
-        if (auth) {
+    session = req.session;
+    Todo.find({ user: session.userid }).then((t) => {
+        if (session.userid) {
             res.render("todo", { fulData: t })
         }
         else
@@ -97,8 +111,9 @@ app.post('/login', (req, res) => {
             res.redirect("/signup");
         else {
             if (bcrypt.compare(passwordUser, result.password)) {
-                auth = true;
-                userID = result._id;
+                // SESSION
+                session = req.session;
+                session.userid = result._id;
                 res.redirect("/todo")
             }
             else
@@ -132,7 +147,7 @@ app.post('/addtodo', (req, res) => {
     const newTitle = req.body.title;
     const newDesc = req.body.desc;
     const newTodo = new Todo({
-        user: userID,
+        user: session.userid,
         title: newTitle,
         desc: newDesc
     });
