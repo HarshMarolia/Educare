@@ -1,13 +1,26 @@
-# Educare
-'EDUCARE' is a student-friendly desktop app which comes with a todo-list functionality that allows you to set a timer for tasks you wish to complete in a specific amount of time. When you finish all your tasks in the time duration you had planned, you will obviously feel gratified and for that we shall reward you. You can listen to a variety of songs depending on your mood and rejuvenate yourself after hours of work. Once your mood is set, you can again set goals for yourself in the todo-list app and continue working.
-<br><br>[Preview on Heroku](https://educare-project.herokuapp.com/)
+# Educare: Empowering Productivity and Well-being
+
+Welcome to **Educare**, your ultimate companion for boosting productivity, achieving your goals, and nurturing your well-being. This student-friendly desktop app seamlessly integrates task management, time tracking, rewards, mood-enhancing music, and more, all designed to elevate your study and work experience.
+
+## Features
+
+📝 **Smart Task Management**: Create and organize your tasks effortlessly with our intuitive to-do-list functionality. Plan your workload, set priorities, and stay on top of your assignments and projects.
+
+⏲️ **Time Tracking and Reward System**: Set timers for your tasks to enhance focus and efficiency. Achieve your tasks within the designated time, and you'll earn well-deserved rewards that motivate and gratify.
+
+🎵 **Mood-Boosting Music**: Access a curated collection of songs tailored to your mood. Whether you need calming melodies or energizing beats, find the perfect soundtrack to accompany your work sessions.
+
+🔄 **Seamless Workflow**: Transition seamlessly between tasks and mood enhancement. Once you've recharged with music, dive back into your todo-list app to continue your productive journey.
+
 
 ## Technologies Used
-* HTML, CSS and JavaScript for public webpages.
-* Bootstrap and jQuery for enhancing the front-end.
-* EJS as a templating engine.
-* NodeJS for the back-end server.
-* Mongoose for storing tasks in database.
+* Front-End: HTML, CSS, and JavaScript lay the foundation for interactive web pages. Bootstrap and jQuery enhance aesthetics and user experience.
+
+* Templating Engine: EJS (Embedded JavaScript) enables dynamic content rendering, ensuring a flexible and efficient presentation.
+
+* Back-End: Node.js powers the server, providing robust functionality and seamless performance.
+
+* Database: Utilize Mongoose to securely store and manage tasks, fostering data integrity and accessibility.
 
 ## Quick Start
 * Clone the repository on your system.<br>
@@ -20,6 +33,11 @@
   ```npm start```
   <br><br>
 By default, the server will be live at [http://localhost:3000/](http://localhost:3000/). Otherwise the suitable port can be specified in the `.env` file.
+
+## Contact
+For inquiries, support, or feedback, feel free to reach out:
+
+📧 Harsh Marolia - maroliaharsh@gmail.com
 
 ## Credits
 Made with ❤️ by <b>Harsh Marolia</b>.
