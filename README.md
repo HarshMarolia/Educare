@@ -6,12 +6,15 @@ Welcome to **Educare**, your ultimate companion for boosting productivity, achie
 
 📝 **Smart Task Management**: Create and organize your tasks effortlessly with our intuitive to-do-list functionality. Plan your workload, set priorities, and stay on top of your assignments and projects.
 
-⏲️ **Time Tracking and Reward System**: Set timers for your tasks to enhance focus and efficiency. Achieve your tasks within the designated time, and you'll earn well-deserved rewards that motivate and gratify.
+⏲️ **Pomodoro Timer**: Boost your productivity with the Pomodoro Technique. Set timers for focused work intervals and short breaks to optimize your study and work sessions.
 
-🎵 **Mood-Boosting Music**: Access a curated collection of songs tailored to your mood. Whether you need calming melodies or energizing beats, find the perfect soundtrack to accompany your work sessions.
+🌐 **URL Shortener**: Quickly and conveniently shorten long URLs with our built-in URL shortener. Simplify sharing and save space.
 
-🔄 **Seamless Workflow**: Transition seamlessly between tasks and mood enhancement. Once you've recharged with music, dive back into your todo-list app to continue your productive journey.
+🔐 **Random Password Generator**: Generate strong and secure passwords on the fly. Keep your accounts and data safe with randomly generated passwords.
 
+🎵 **Spotify Integration**: Seamlessly connect with Spotify to access a vast library of music. Enhance your mood with a personalized soundtrack while you work or study.
+
+🔄 **Seamless Workflow**: Transition seamlessly between tasks, timers, URL shortening, password generation, and music integration. Streamline your workflow for ultimate productivity.
 
 ## Technologies Used
 * Front-End: HTML, CSS, and JavaScript lay the foundation for interactive web pages. Bootstrap and jQuery enhance aesthetics and user experience.
@@ -41,3 +44,4 @@ For inquiries, support, or feedback, feel free to reach out:
 
 ## Credits
 Made with ❤️ by <b>Harsh Marolia</b>.
+
